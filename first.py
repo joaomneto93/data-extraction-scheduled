@@ -3,6 +3,7 @@ import time
 import requests
 
 
+
 class Extract:
     """Classe utilizada para extração de dados provenientes de determinada url\n\nParâmetros:\nurl: url do site desejado"""
 
