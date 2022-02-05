@@ -2,6 +2,7 @@ import scheduler
 import time
 import requests
 
+urladress = input('Enter url adress:\n')
 
 
 class Extract:
