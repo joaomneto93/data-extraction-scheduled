@@ -1,5 +1,7 @@
 import scheduler
 import time
+import requests
+
 
 
 class Extract:
