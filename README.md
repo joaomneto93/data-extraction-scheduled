@@ -5,7 +5,7 @@ Aplicação para extração de dados em horários programados, desenvolvido por 
 
 Como utilizar a aplicação:
 
-- No diretório app/ execute os comandos abaixo:
+- No diretório raiz do projeto execute os comandos abaixo:
 
             > cd app
 
