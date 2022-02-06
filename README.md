@@ -7,6 +7,10 @@ Como utilizar a aplicação:
 
 - No diretório app/ execute os comandos abaixo:
 
+            > cd app
+
+            > python -m pip install virtualenv
+
             > python -m pip install -r requirements.txt
 
             > python -m virtualenv venv
