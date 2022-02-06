@@ -33,10 +33,10 @@ def get_option() -> None:
 
     if check_option(user_option):
         print(f"Opção escolhida {user_option}")
+        # menu_escolhido(user_option)
     else:
-        print(f"Você deve inserir 1,2 ou 3!")
+        print("Você deve inserir 1,2 ou 3!")
         time.sleep(2.5)
-        clearConsole()
         menu()
 
 
