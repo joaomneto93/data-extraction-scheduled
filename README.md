@@ -1,4 +1,20 @@
 # data-extraction-scheduled
-Atualização: 05 de fevereiro
 
-Algoritmo para extração de dados em horários programados, desenvolvido por Joãos
+# Informações
+
+Aplicação para extração de dados em horários programados, desenvolvido por Joãos
+
+# Setup
+#teste
+
+## No diretório raiz do projeto execute os comandos abaixo:
+
+    > cd app
+
+    > python -m pip install virtualenv
+
+    > python -m virtualenv venv
+
+    > source venv/bin/activate
+
+    > python -m pip install -r requirements.txt
