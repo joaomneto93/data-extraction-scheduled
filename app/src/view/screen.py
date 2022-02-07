@@ -1,5 +1,6 @@
 import os
 import time
+from src.helpers.menu_flow import menu_choosed
 
 def clearConsole() -> None:
     command = 'clear'
@@ -33,7 +34,7 @@ def get_option() -> None:
 
     if check_option(user_option):
         print(f"Opção escolhida {user_option}")
-        # menu_escolhido(user_option)
+        menu_choosed(user_option)
     else:
         print("Você deve inserir 1,2 ou 3!")
         time.sleep(2.5)
@@ -43,4 +44,3 @@ def get_option() -> None:
 def menu():
     clearConsole()
     menu_screen()
-    
