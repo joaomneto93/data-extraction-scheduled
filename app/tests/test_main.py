@@ -1,4 +1,4 @@
-import main
+from main import menu
 
-def test_main():
+def test_menu():
     assert True
