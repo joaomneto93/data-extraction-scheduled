@@ -33,16 +33,16 @@ def put_login(is_default = True) -> dict:
     return login
 
 
-def auth():
+def auth(is_default: bool) -> str:
 
     login = {}
-    login = put_login(False)
+    login = put_login(is_default)
     username = login["user"]
     password = login["pass"]
     
     browser = webdriver.Chrome(ChromeDriverManager().install())
     browser.get(__SITE_URL)
-
+    
     browser.find_element_by_id(__ID_USER).send_keys(
         base64.b64decode(username).decode("utf-8", "ignore"))
     browser.find_element_by_id(__ID_PASS).send_keys(
@@ -51,3 +51,4 @@ def auth():
     browser.find_element_by_id(__ID_LOGIN ).click()
     # browser.save_screenshot('auth_screen.png')
     time.sleep(2.5)
+    return "OK"
