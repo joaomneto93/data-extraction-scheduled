@@ -1,3 +1,5 @@
 from src.view.screen import menu
 
-menu()
+def handler():
+    response = menu()
+    return response
