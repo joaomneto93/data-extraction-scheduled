@@ -1,22 +1,26 @@
 import os
 import time
-from src.helpers.menu_flow import menu_choosed
+from types import resolve_bases
+from src.helpers.menu_flow import menu_chosen
+from src.helpers.messages import Messages as Msg
 
 def clearConsole() -> None:
     command = 'clear'
-    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+    if os.name in ('nt', 'dos'):
         command = 'cls'
     os.system(command)
 
 
-def menu_screen() -> None:
+def menu_screen() -> str:
+    response = ""
     print(" ----------------MENU----------------")
     print("|   Escolha uma das opções abaixo    |")
     print("| 1 - Baixar por uma URL             |")
     print("| 2 - Baixar por uma lista de URL's  |")
     print("| 3 - Sair                           |")
     print(" ------------------------------------")
-    get_option()
+    response = get_option()
+    return response
 
 
 def check_option(user_option: str) -> bool:
@@ -29,18 +33,22 @@ def check_option(user_option: str) -> bool:
     return options_to_validate
 
 
-def get_option() -> None:
-    user_option = input('Insira sua opção: ')
+def get_option() -> str:
+    response = 'NOK'
+    user_option = input(Msg.PUT_OPTION)
 
     if check_option(user_option):
-        print(f"Opção escolhida {user_option}")
-        menu_choosed(user_option)
+        print(f"\nOpção escolhida: {user_option}\n")
+        response = menu_chosen(user_option)
     else:
-        print("Você deve inserir 1,2 ou 3!")
+        print(Msg.OPTION_WARNING)
         time.sleep(2.5)
         menu()
+    return response
 
 
-def menu():
+def menu() -> str:
+    response = 'OK'
     clearConsole()
-    menu_screen()
+    response = menu_screen()
+    return response
