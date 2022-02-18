@@ -36,6 +36,8 @@ jobs:
     #    flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
+        cd app
+        source venv/bin/activate
         pwd
-        ls -lh
+        ls -lh venv/
         python -m pytest -v --cov-report html --cov=. --cov-config=.coveragerc tests/test_main.py 
