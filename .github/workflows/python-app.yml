@@ -38,6 +38,5 @@ jobs:
       run: |
         cd app
         source venv/bin/activate
-        pwd
-        ls -lh venv/
-        python -m pytest -v --cov-report html --cov=. --cov-config=.coveragerc tests/test_main.py 
+        ls -lh venv/bin/
+        venv/bin/python -m pytest -v --cov-report html --cov=. --cov-config=.coveragerc tests/test_main.py 
