@@ -2,6 +2,7 @@
 import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from src.helpers.messages import Messages as Msg
 import base64
 import getpass
 
@@ -25,9 +26,10 @@ def put_login(is_default = True) -> dict:
         login["pass"] = __PASS
     else:
         login["user"] = base64.b64encode(
-            bytes(str(input("Insira seu usuário: ")), "utf-8"))
+            bytes(str(input(str(Msg.PUT_USER))), "utf-8"))
+
         login["pass"] = base64.b64encode(
-            bytes(str(getpass.getpass("Insira sua senha: ")), "utf-8"))
+            bytes(str(getpass.getpass(str(Msg.PUT_PASS))), "utf-8"))
         
 
     return login

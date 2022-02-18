@@ -5,7 +5,6 @@
 Aplicação para extração de dados em horários programados, desenvolvido por Joãos
 
 # Setup
-#teste
 
 ## No diretório raiz do projeto execute os comandos abaixo:
 
