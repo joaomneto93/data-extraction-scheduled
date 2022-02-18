@@ -24,10 +24,6 @@ jobs:
       run: |
         cd app
         python -m pip install --upgrade pip
-        python -m pip install virtualenv
-        python -m virtualenv venv
-        source venv/bin/activate
-        python -m pip install -r requirements.txt
     #- name: Lint with flake8
     #  run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -37,6 +33,10 @@ jobs:
     - name: Test with pytest
       run: |
         cd app
+        python -m pip install virtualenv
+        python -m virtualenv venv
+        source venv/bin/activate
+        python -m pip install -r requirements.txt
         source venv/bin/activate
         ls -lh venv/bin/
         venv/bin/python -m pytest -v --cov-report html --cov=. --cov-config=.coveragerc tests/test_main.py 
