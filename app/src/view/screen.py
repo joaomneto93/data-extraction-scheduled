@@ -1,7 +1,8 @@
 import os
 import time
 from types import resolve_bases
-from src.helpers.menu_flow import menu_choosed
+from src.helpers.menu_flow import menu_chosen
+from src.helpers.messages import Messages as Msg
 
 def clearConsole() -> None:
     command = 'clear'
@@ -33,21 +34,21 @@ def check_option(user_option: str) -> bool:
 
 
 def get_option() -> str:
-    response = ""
-    user_option = input('Insira sua opção: ')
+    response = 'NOK'
+    user_option = input(Msg.PUT_OPTION)
 
     if check_option(user_option):
-        print(f"\nOpção escolhida: {user_option}")
-        response = menu_choosed(user_option)
+        print(f"\nOpção escolhida: {user_option}\n")
+        response = menu_chosen(user_option)
     else:
-        print("\nVocê deve inserir 1,2 ou 3!")
+        print(Msg.OPTION_WARNING)
         time.sleep(2.5)
         menu()
     return response
 
 
 def menu() -> str:
-    response = ""
+    response = 'OK'
     clearConsole()
     response = menu_screen()
     return response
