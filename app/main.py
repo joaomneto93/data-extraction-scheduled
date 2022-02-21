@@ -1,8 +1,10 @@
 from src.view.screen import menu
 from src.helpers.messages import Messages as Msg
 
+
 def process():
     return menu()
+
 
 def main():
     response = process()
@@ -10,5 +12,6 @@ def main():
         print(Msg.SUCCESS_MSG)
     else:
         print(Msg.FAILED_MSG)
+
 
 main()

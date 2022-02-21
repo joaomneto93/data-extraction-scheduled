@@ -3,16 +3,15 @@ import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from src.helpers.messages import Messages as Msg
+
 import base64
 import getpass
 
-# URL do site a ser autenticado
-__SITE_URL = "https://fornecedor.extrafarma.com.br/Account/Login?SourceURL=https://fornecedor.extrafarma.com.br/"
 
 # id dos items a serem buscados
-__ID_USER = "txtEmail"
-__ID_PASS = "txtSenha"
-__ID_LOGIN = "btnLogar"
+__ID_USER = Msg.TEXT_FIELD_ID_USER
+__ID_PASS = Msg.TEXT_FIELD_ID_PASS
+__ID_LOGIN = Msg.BUTTON_ID_LOGIN
 
 # Usuário e Senha para autenticação
 __EMAIL = b'dGVzdGVAY2hhdHViYS5jb20='
@@ -35,22 +34,28 @@ def put_login(is_default = True) -> dict:
     return login
 
 
-def auth(is_default: bool) -> str:
-
+def auth(is_default: bool) -> webdriver:
     login = {}
     login = put_login(is_default)
     username = login["user"]
     password = login["pass"]
     
     browser = webdriver.Chrome(ChromeDriverManager().install())
-    browser.get(__SITE_URL)
+    browser.get(str(Msg.SITE_URL_LOGIN))
     
     browser.find_element_by_id(__ID_USER).send_keys(
         base64.b64decode(username).decode("utf-8", "ignore"))
     browser.find_element_by_id(__ID_PASS).send_keys(
         base64.b64decode(password).decode("utf-8", "ignore"))
-    
+
+    # ONLY FOR TEST
+    # browser.find_element_by_id(__ID_USER).send_keys('USUARIO')
+    # browser.find_element_by_id(__ID_PASS).send_keys('SENHA')
+
     browser.find_element_by_id(__ID_LOGIN ).click()
-    # browser.save_screenshot('auth_screen.png')
-    time.sleep(2.5)
-    return "OK"
+    time.sleep(3.5)
+
+    if browser:
+        return browser
+
+    return False
