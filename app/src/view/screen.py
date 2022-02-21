@@ -15,9 +15,8 @@ def menu_screen() -> str:
     response = ""
     print(" ----------------MENU----------------")
     print("|   Escolha uma das opções abaixo    |")
-    print("| 1 - Baixar por uma URL             |")
-    print("| 2 - Baixar por uma lista de URL's  |")
-    print("| 3 - Sair                           |")
+    print("| 1 - Baixar relatório               |")
+    print("| 2 - Sair                           |")
     print(" ------------------------------------")
     response = get_option()
     return response
@@ -26,8 +25,7 @@ def menu_screen() -> str:
 def check_option(user_option: str) -> bool:
     options_to_validate = any([
         user_option.__eq__("1"),
-        user_option.__eq__("2"),
-        user_option.__eq__("3")
+        user_option.__eq__("2")
     ])
     
     return options_to_validate

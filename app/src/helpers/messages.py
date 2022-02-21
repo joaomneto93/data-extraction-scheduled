@@ -10,5 +10,20 @@ class Messages(Enum):
     SUCCESS_MSG = 'Programa executado com sucesso!'
     FAILED_MSG = 'Programa executado com falha!'
 
+    # Fields to make HTTP Request
+    SITE_URL_LOGIN = 'https://fornecedor.extrafarma.com.br/Account/Login'
+    SITE_URL_RELATORIO = 'https://fornecedor.extrafarma.com.br/SolicitaRelatorio/'
+
+    TEXT_FIELD_ID_USER = 'txtEmail'
+    TEXT_FIELD_ID_PASS = 'txtSenha'
+    
+    FIELD_NAME_LOCALS = 'idCentroDistribuicao'
+    FIELD_NAME_SUPPLIER = 'idFornecedor'
+    FIELD_NAME_SUB_DIVISION = 'idSubDivisao'
+
+    
+    BUTTON_ID_LOGIN = 'btnLogar'
+    BUTTON_ID_GERA_RELAT = 'GerarRelatorio'
+
     def __str__(self):
         return '%s' % self.value
