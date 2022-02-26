@@ -1,25 +1,30 @@
-from src.helpers.messages import Messages as Msg
-from src.business.auth import auth
-from src.business.get_content import get_content
 import time
+from src.helpers.messages import Messages as Msg
+from src.helpers.utils import exit_option
+from src.connection.handler import handler
+from src.helpers.check_input import check_menu_input
 
 
-def exit_option(message: str) -> None:
-    print(message)
-    time.sleep(1.5)
-    return
-
-
-def menu_chosen(user_option: str) -> str:
-    response = "NOK"
+def menu_chosen(user_option: str) -> bool:
+    response = False
     if user_option.__eq__("1"):
-        authenticated = auth(False)
-        if not authenticated:
-            return response
-        response = get_content(authenticated)
+        response = handler()
 
     if user_option.__eq__("2"):
         exit_option(str(Msg.EXITING))
-        response = "OK"
+        response = True
 
+    return response
+
+
+def get_option() -> bool:
+    response = False
+    user_option = input(Msg.PUT_OPTION)
+
+    if check_menu_input(user_option):
+        print(f"\nOpção escolhida: {user_option}\n")
+        response = menu_chosen(user_option)
+    else:
+        print(Msg.OPTION_WARNING)
+        time.sleep(1.0)
     return response
