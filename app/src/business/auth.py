@@ -1,11 +1,9 @@
-#import schedule
-import time
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from src.helpers.messages import Messages as Msg
-
 import base64
 import getpass
+
+from src.helpers.messages import Messages as Msg
+from src.helpers.browser_helper import create_driver_connection
+from src.connection.session import check_cookie
 
 
 # id dos items a serem buscados
@@ -15,34 +13,26 @@ __ID_LOGIN = Msg.BUTTON_ID_LOGIN
 
 # Usuário e Senha para autenticação
 __EMAIL = b'dGVzdGVAY2hhdHViYS5jb20='
-__PASS  = b'Y2hhdHViYWRlbWVzcXVpdGE='
+__PASS = b'Y2hhdHViYWRlbWVzcXVpdGE='
 
-def put_login(is_default = True) -> dict:
-    login = {}
 
-    if is_default:
-        login["user"] = __EMAIL
-        login["pass"] = __PASS
-    else:
-        login["user"] = base64.b64encode(
-            bytes(str(input(str(Msg.PUT_USER))), "utf-8"))
-
-        login["pass"] = base64.b64encode(
+def put_login() -> dict:
+    return {
+        'user': base64.b64encode(
+            bytes(str(input(str(Msg.PUT_USER))), "utf-8")),
+        'pass': base64.b64encode(
             bytes(str(getpass.getpass(str(Msg.PUT_PASS))), "utf-8"))
-        
-
-    return login
+    }
 
 
-def auth(is_default: bool) -> webdriver:
-    login = {}
-    login = put_login(is_default)
+def auth():
+    login = put_login()
     username = login["user"]
     password = login["pass"]
     
-    browser = webdriver.Chrome(ChromeDriverManager().install())
+    browser = create_driver_connection()
     browser.get(str(Msg.SITE_URL_LOGIN))
-    
+
     browser.find_element_by_id(__ID_USER).send_keys(
         base64.b64decode(username).decode("utf-8", "ignore"))
     browser.find_element_by_id(__ID_PASS).send_keys(
@@ -51,11 +41,9 @@ def auth(is_default: bool) -> webdriver:
     # ONLY FOR TEST
     # browser.find_element_by_id(__ID_USER).send_keys('USUARIO')
     # browser.find_element_by_id(__ID_PASS).send_keys('SENHA')
+    browser.find_element_by_id(__ID_LOGIN).click()
 
-    browser.find_element_by_id(__ID_LOGIN ).click()
-    time.sleep(3.5)
-
-    if browser:
+    if check_cookie(browser):
         return browser
-
-    return False
+    else:
+        return None
