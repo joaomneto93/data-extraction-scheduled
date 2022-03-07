@@ -27,7 +27,12 @@ class Messages(Enum):
     FIELD_NAME_LOCALS = 'idCentroDistribuicao'
     FIELD_NAME_PROVIDER = 'idFornecedor'
     FIELD_NAME_SUBSECTION = 'idSubDivisao'
-    
+    FIELD_NAME_MONTH_01 = 'Mes01'
+    FIELD_NAME_MONTH_02 = 'Mes02'
+    FIELD_NAME_MONTH_03 = 'Mes03'
+    FIELD_NAME_STATE = 'Estados'
+    FIELD_NAME_STATUS = 'Status'
+
     BUTTON_ID_LOGIN = 'btnLogar'
     BUTTON_ID_GERA_RELAT = 'GerarRelatorio'
 
