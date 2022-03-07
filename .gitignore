@@ -6,3 +6,4 @@ geckodriver.log
 .coverage
 htmlcov
 .vscode
+../.idea
